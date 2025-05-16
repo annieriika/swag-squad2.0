@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.env/
+.venv/
+env/
+venv/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# Pytest cache
+.pytest_cache/
+
+# Model weights and training outputs
+*.pt
+*.pth
+*.bin
+
+# Datasets
+*.csv
+*.tsv
+*.json
+*.xlsx
+*.pkl
+
+# Transformers cache
+~/.cache/huggingface/
+.cache/
+huggingface/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.egg-info/
+dist/
+build/

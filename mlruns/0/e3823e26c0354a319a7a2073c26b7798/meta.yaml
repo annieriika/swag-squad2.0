@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/K%C3%A4ytt%C3%A4j%C3%A4/OneDrive/Asiakirjat/MA%20thesis/code/github/mlruns/0/e3823e26c0354a319a7a2073c26b7798/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e3823e26c0354a319a7a2073c26b7798
+run_name: ./model
+run_uuid: e3823e26c0354a319a7a2073c26b7798
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747398665142
+status: 1
+tags: []
+user_id: Käyttäjä

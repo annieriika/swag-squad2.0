@@ -1,0 +1,10 @@
+torch
+transformers
+datasets
+evaluate
+scikit-learn
+matplotlib
+seaborn
+numpy
+python-Levenshtein
+scipy

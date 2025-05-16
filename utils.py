@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 import torch
 import numpy as np
 from transformers import EvalPrediction
-from utils_qa import postprocess_qa_predictions
+from utils_qa import postprocess_qa_predictions, postprocess_qa_predictions_with_softmax
 
 
 # Preprocessing function for the train and validation datasets from https://github.com/huggingface/transformers/blob/main/examples/pytorch/question-answering/run_qa.py
@@ -210,4 +210,31 @@ def post_processing_function(examples, features, predictions, stage="eval"):
 
     references = [{"id": str(ex["id"]), "answers": ex["answers"]} for ex in examples]
 
+    return EvalPrediction(predictions=formatted_predictions, label_ids=references)
+
+def post_processing_function_with_softmax(examples, features, predictions, stage="eval"):
+    # Post-process to match the logits to answers
+    predictions = postprocess_qa_predictions_with_softmax(
+        examples=examples,
+        features=features,
+        predictions=predictions,
+        version_2_with_negative=True,
+        n_best_size=20,
+        max_answer_length=30,
+        null_score_diff_threshold=0.0,
+        output_dir="./results",
+        prefix=stage,
+    )
+    
+    formatted_predictions = [
+        {
+            "id": str(k),
+            "prediction_text": v["prediction"],  
+            "no_answer_probability": 0.0,
+            "softmax": v["softmax"]  
+        }
+        for k, v in predictions.items()
+    ]
+
+    references = [{"id": str(ex["id"]), "answers": ex["answers"]} for ex in examples]
     return EvalPrediction(predictions=formatted_predictions, label_ids=references)
